@@ -1,0 +1,25 @@
+{
+  "name": "translator",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel --lazy --https",
+    "build": "parcel build"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@editorjs/editorjs": "^2.25.0",
+    "@editorjs/header": "^2.6.2",
+    "@editorjs/list": "^1.7.0",
+    "@editorjs/underline": "^1.0.0",
+    "clipboard": "^2.0.11",
+    "editorjs-html": "^3.4.2"
+  },
+  "devDependencies": {
+    "@editorjs/raw": "^2.3.1",
+    "parcel": "^2.7.0"
+  }
+}
