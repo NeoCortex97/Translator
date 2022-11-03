@@ -16,8 +16,24 @@
         <div class="row">
             <div  class="col-1"></div>
             <button id="copy" class="button col-2">Kopieren</button>
+            <button id="save" class="button col-2">Speichern</button>
+            <button id="load" class="button col-2">Laden</button>
         </div>
     </div>
+    <dialog id="loadDialog">
+        <form method="dialog">
+            <button class="close">Schließen</button>
+            <h2 id="confirm-dialog-heading">Laden</h2>
+            <p>
+                <label for="dialog_select">Welchen Stand möchten sie Laden?</label>
+                <select name="dialog_select" id="loadSelect"></select>
+            </p>
+            <p class="button-row">
+                <button name="ok" value="temp">OK</button>
+                <button name="cancel">Abbrechen</button>
+            </p>
+        </form>
+    </dialog>
     <script src="main.ts" type="module" />
 </body>
 </html>
