@@ -1,13 +1,14 @@
-body {
+/* body {
     background-color: darkblue;
-}
+} */
 
 #markup {
-    background-color: slateblue;
+    background-color: lightgrey;
 }
 
 #content {
-    background-color: gray;
+    background-color: lightgray;
+    min-height: 100px;
 }
 
 .container {
