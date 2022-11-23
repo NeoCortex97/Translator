@@ -3,6 +3,7 @@ import Header from '@editorjs/header';
 import List from '@editorjs/list'; 
 import Raw from '@editorjs/raw';
 import Underline from '@editorjs/underline';
+import Spacer from '@veryard/spacer';
 import edjsParser from  'editorjs-html';
 import ClipboardJS from 'clipboard';
 import './simple-grid.min.css';
@@ -15,7 +16,7 @@ const clearButton = document.getElementById('clear');
 const loadDialog = document.getElementById('loadDialog');
 const loadSelect = document.getElementById('loadSelect');
 const loadOk = document.getElementById('ok');
-const parser = edjsParser({paragraph: text, raw: raw});
+const parser = edjsParser({paragraph: text, raw: raw, spacer: spacerParser});
 const clipboard = new ClipboardJS('#copy');
 
 let refresh: any = undefined;
@@ -102,6 +103,9 @@ const editor = new EditorJS({
             class: Underline,
             inlineToolbar: true,
         },
+        spacer: {
+            class: Spacer
+        }
     },
     onChange: (api, event) => {
         if (refresh !== undefined) {
@@ -135,4 +139,8 @@ function text(block: any) {
 
 function raw(block:any) {
     return block.data.text;
+}
+
+function spacerParser(block:any) {
+    return '<br>';
 }
