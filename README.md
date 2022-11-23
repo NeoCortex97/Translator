@@ -1,6 +1,7 @@
 # Translator
 
-Verwandelt die formatierte Eingabe in html code.
+Verwandelt die formatierte Eingabe in html code.  
+Hinweise zur benutzung gibt es [hier](#benutzung)
 
 ## Installation
 
@@ -32,3 +33,9 @@ Wenn in der Fehlermedung etwas davon steht, dass beim Bauen ein Fehler aufgetret
 ### Dein Fehler ist hier nicht aufgeführt
 
 Öffne ein Issue, oder kontaktiere mich.
+
+
+## Benutzung
+
+* Du kannst direkt aus einem Dokument kopieren, so lange du es in LibreOffice, oder OpenOffice geöffnet hast. Das Kopieren aus Word funktioniert leider nicht gut, oder garnicht. Bei einfachen Dokumenten könnte allerdings auch Word funktionieren.
+* Wenn du möchtest, dass zwischen zwei Zellen eine Leere Zeile ist, dann benutze eine `spacer`-Zelle.
