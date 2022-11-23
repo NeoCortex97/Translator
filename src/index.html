@@ -8,16 +8,20 @@
     <title>Translator</title>
 </head>
 <body>
+    <div class="row" style="margin-top: 10pt;">
+        <div  class="col-1"></div>
+        <!-- <button id="copy" class="button col-2">Kopieren</button> -->
+        <button id="save" class="button col-2">Speichern</button>
+        <button id="load" class="button col-2">Laden</button>
+        <button id="clear" class="button col-2">Leeren</button>
+    </div>
     <div class="container">
         <div class="row">
             <div id="markup" class="col-8"></div>
-            <div id="content" class="col-4"></div>
-        </div>
-        <div class="row">
-            <div  class="col-1"></div>
-            <!-- <button id="copy" class="button col-2">Kopieren</button> -->
-            <button id="save" class="button col-2">Speichern</button>
-            <button id="load" class="button col-2">Laden</button>
+            <div class="col-4">
+                <div id="preview" ></div>
+                <div id="content" ></div>
+            </div>
         </div>
     </div>
     <dialog id="loadDialog">

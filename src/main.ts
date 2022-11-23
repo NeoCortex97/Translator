@@ -7,10 +7,11 @@ import edjsParser from  'editorjs-html';
 import ClipboardJS from 'clipboard';
 import './simple-grid.min.css';
 
-const preview = document.getElementById('content');
-const copyButton = document.getElementById('copy');
+const output = document.getElementById('content');
+const preview = document.getElementById('preview');
 const saveButton = document.getElementById('save');
 const loadButton = document.getElementById('load');
+const clearButton = document.getElementById('clear');
 const loadDialog = document.getElementById('loadDialog');
 const loadSelect = document.getElementById('loadSelect');
 const loadOk = document.getElementById('ok');
@@ -20,6 +21,11 @@ const clipboard = new ClipboardJS('#copy');
 let refresh: any = undefined;
 
 window.addEventListener('load', (evt) => {
+    clearButton?.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        editor.clear();
+    });
+
     saveButton?.addEventListener('click', (ev) => {
         ev.preventDefault();
         const name = prompt("Unter welcher Bezeichnung soll dieses Dokument gespeichert werden?", "temp");
@@ -102,17 +108,24 @@ const editor = new EditorJS({
             clearTimeout(refresh);
         }
         refresh = setTimeout(update, 500);
-      }
+    }
 });
 
 function update() {
+    const ul_replace = /<br><ul>/g
+    const ol_replace = /<br><ol>/g
+
     editor.save().then((outputData) => {
         let html: string = parser.parse(outputData).join('');
         if (html.slice(-4) === "<br>") html = html.slice(0, html.length - 4)
-        if (preview !== undefined) preview.innerText = html;
-      }).catch((error) => {
+        html = html.replace(ul_replace, "<ul>");
+        html = html.replace(ol_replace, "<ol>");
+        html = html.replace("\n", "");
+        if (output !== undefined) output.innerText = html;
+        if (preview !== undefined) preview.innerHTML = html;
+    }).catch((error) => {
         console.log('Saving failed: ', error)
-      });
+    });
 }
 
 function text(block: any) {
