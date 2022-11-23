@@ -118,13 +118,15 @@ const editor = new EditorJS({
 function update() {
     const ul_replace = /<br><ul>/g
     const ol_replace = /<br><ol>/g
+    const newline = /(\r\n|\n|\r)/gm
 
     editor.save().then((outputData) => {
         let html: string = parser.parse(outputData).join('');
         if (html.slice(-4) === "<br>") html = html.slice(0, html.length - 4)
         html = html.replace(ul_replace, "<ul>");
         html = html.replace(ol_replace, "<ol>");
-        html = html.replace("\n", "");
+        html = html.replace(newline, "");
+        html = decode(html);
         if (output !== undefined) output.innerText = html;
         if (preview !== undefined) preview.innerHTML = html;
     }).catch((error) => {
@@ -143,4 +145,11 @@ function raw(block:any) {
 
 function spacerParser(block:any) {
     return '<br>';
+}
+
+function decode(text:string) {
+    const gt = /&gt;/g
+    const lt = /&lt;/g
+    const amp = /&amp;/g
+    return text.replace(gt, ">").replace(lt, "<").replace(amp, "/");
 }
