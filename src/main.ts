@@ -121,11 +121,11 @@ function update() {
     const newline = /(\r\n|\n|\r)/gm
 
     editor.save().then((outputData) => {
-        let html: string = parser.parse(outputData).join('');
+        let html: string = parser.parse(outputData).join(' ');
         if (html.slice(-4) === "<br>") html = html.slice(0, html.length - 4)
         html = html.replace(ul_replace, "<ul>");
         html = html.replace(ol_replace, "<ol>");
-        html = html.replace(newline, "");
+        html = html.replace(newline, " ");
         html = decode(html);
         if (output !== undefined) output.innerText = html;
         if (preview !== undefined) preview.innerHTML = html;
